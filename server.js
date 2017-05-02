@@ -42,10 +42,13 @@ app.use(cookieParser());
 //   res.sendStatus(406);
 // });
 const users = require('./routes/users');
+const exercises = require('./routes/exercises');
+const scores = require('./routes/scores');
+const noteScore = require('./routes/noteScore');
 // console.log('what is middlewareVerify', middlewareVerify);
 // app.use('/users', middlewareVerify );
 
-//GOOGLE auth
+// GOOGLE auth
 // app.use(passport.initialize());
 // app.use(passport.session());
 //
@@ -56,10 +59,13 @@ const users = require('./routes/users');
 // // this wires up passport's session code to your session
 // app.use(passport.session())
 // app.use('/auth', auth);
-//Google Auth
-
+// Google Auth
 
 app.use(users);
+app.use(exercises);
+app.use(scores);
+app.use(noteScore);
+
 app.use((_req, res) => {
   res.sendStatus(404);
 });

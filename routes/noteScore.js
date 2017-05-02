@@ -1,7 +1,7 @@
 const express = require('express');
 const knex = require('../knex');
 const router = express.Router();
-import getNoteAndOctave from './charts/converter';
+const getNoteAndOctave = require('../charts/converter');
 
 
 router.get('/users/:userId/note-score/:keyNum', (req, res, next) => {
@@ -31,7 +31,10 @@ router.get('/users/:userId/note-score/:keyNum', (req, res, next) => {
       ]
       };
     })
-    .catch((err) => { console.log(err); });
+    .catch((err) => {
+      res.set('Content-type', 'text/plain');
+      res.status(400).send('Not Found.');
+    });
 });
 
 
