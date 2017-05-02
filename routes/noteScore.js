@@ -31,9 +31,7 @@ router.get('/users/:userId/note-score/:keyNum', (req, res, next) => {
       ]
       };
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => { console.log(err); });
 });
 
 

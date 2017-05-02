@@ -10,9 +10,7 @@ router.get('/users/:userId/exercises', (req, res, next) => {
     .then((user_exercises) => {
       res.json(user_exercises);
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => { console.log(err); });
 });
 
 
@@ -27,9 +25,7 @@ router.get('/users/:userId/exercises/:exId', (req, res, next) => {
     .then((user_exercise) => {
       res.json(user_exercise);
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => { console.log(err); });
 });
 
 
@@ -42,11 +38,7 @@ router.post('/users/:userId/exercises', (req, res, next) => {
     .then((user_exercises) => {
       res.json(user_exercises);
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => { console.log(err); });
 });
-
-
 
 module.exports = router;

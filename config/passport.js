@@ -10,19 +10,20 @@ passport.use(new GoogleStrategy({
   clientSecret: configAuth.googleAuth.clientSecret,
   callbackURL: configAuth.googleAuth.callbackURL,
   },
-  function(accessToken, refreshToken, profile, done) {
-    process.nextTick(function(){
 
+  function (accessToken, refreshToken, profile, done) {
+    process.nextTick(() => {
+      return done(null, profile);
     })
   }
 ));
 
 passport.serializeUser((object, done) => {
   done(null, {token: object.token, id: object.profile.id})
-})
+});
 
 passport.deserializeUser((object, done) => {
-  User.findById(object.id).then(user => {
-    done(null, user)
-  })
-})
+  User.findById(object.id).then((user) => {
+    done(null, user);
+  });
+});

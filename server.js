@@ -5,6 +5,7 @@ if (process.envNODE_ENV !== 'production') {
 
 const middlewareVerify = require('./middlewares/verifications.js');
 const express = require('express');
+const passport = require('passport');
 const app = express();
 
 app.disable('x-powered-by');
