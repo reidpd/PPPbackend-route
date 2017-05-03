@@ -3,18 +3,13 @@ const passport = require('passport');
 
 const router = express.Router();
 
-router.get('/auth/google',
-  passport.authenticate('google', { state: 'SOME STATE' }),
-  function (req, res) {
-    // The request will be redirected to LinkedIn for authentication, so this
-    // function will not be called.
-  });
+router.get('/auth/google', passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
 
 router.get(
-  '/google/callback',
+  '/auth/google/callback',
   passport.authenticate('google', {
     successRedirect: '/profile',
-    failureRedirect: '/',
+    failureRedirect: '/login',
   }),
 function (req, res) {
   res.redirect('/');
@@ -24,3 +19,5 @@ router.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
+
+module.exports = router;
